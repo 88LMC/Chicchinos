@@ -3,7 +3,12 @@ import { useSpring, animated } from 'react-spring';
 import './App.css';
 
 function Header() {
-  const props = useSpring({ opacity: 1, from: { opacity: 0 } });
+  const props = useSpring({
+    to: { opacity: 1 },
+    from: { opacity: 0 },
+    config: { duration: 1000 }
+  });
+
   return (
     <animated.header style={props}>
       <h1>ChicChinos</h1>
@@ -16,7 +21,6 @@ function App() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    // Aquí podrías cargar tus productos desde una API
     setProducts([
       { id: 1, name: 'Chino Clásico', price: 59.99 },
       { id: 2, name: 'Chino Slim Fit', price: 64.99 },
